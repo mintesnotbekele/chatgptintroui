@@ -49,22 +49,22 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     super.initState();
     _changeOpacity();
     _controller.stop();
-    Timer(Duration(seconds: 10), () {
+    Timer(const Duration(seconds: 10), () {
       setState(() {
         setOpacity = false;
       });
       repeatOnce();
-      Timer(Duration(milliseconds: 50), () {
+      Timer(const Duration(milliseconds: 60), () {
         populateLogoText("L");
-        Timer(Duration(milliseconds: 50), () {
+        Timer(const Duration(milliseconds: 60), () {
           populateLogoText("I");
-          Timer(Duration(milliseconds: 50), () {
+          Timer(const Duration(milliseconds: 60), () {
             populateLogoText("N");
-            Timer(Duration(milliseconds: 50), () {
+            Timer(const Duration(milliseconds: 60), () {
               populateLogoText("K");
-              Timer(Duration(milliseconds: 50), () {
+              Timer(const Duration(milliseconds: 60), () {
                 populateLogoText("O");
-                Timer(Duration(milliseconds: 50), () {
+                Timer(const Duration(milliseconds: 60), () {
                   populateLogoText(".");
                 });
               });
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   var animaterate = -0.0;
   late final AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 1),
+    duration: const Duration(milliseconds: 500),
     vsync: this,
   )..repeat(min: 0.0, max: 0.5, reverse: true);
   late final Animation<Offset> _offsetAnimation = Tween<Offset>(
@@ -143,23 +143,24 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 SlideTransition(
                   position: _offsetAnimation,
                   child: Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Image.asset(
                         'assets/texts.png',
                         width: 20,
                       )),
                 ),
                 Text(logotext,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold))
               ],
             )),
             Center(
               child: Container(
-                margin: EdgeInsets.only(left: 30),
+                margin: const EdgeInsets.only(left: 30),
                 child: SlideTransition(
                     position: _offsetAnimation1,
                     child: Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: AnimatedOpacity(
                         opacity: opacityLevel,
                         duration: const Duration(seconds: 1),
