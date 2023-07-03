@@ -49,9 +49,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     super.initState();
     _changeOpacity();
     _controller.stop();
-    Timer(const Duration(seconds: 10), () {
+    Timer(const Duration(seconds: 6), () {
       setState(() {
         setOpacity = false;
+        image = true;
       });
       repeatOnce();
       Timer(const Duration(milliseconds: 60), () {
@@ -77,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   double opacityLevel = 1.0;
   bool initial = false;
+  bool image = false;
   void _changeOpacity() {
     Timer.periodic(const Duration(seconds: 1), (Timer t) {
       if (setOpacity == true) {
@@ -144,10 +146,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   position: _offsetAnimation,
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Image.asset(
-                        'assets/texts.png',
-                        width: 20,
-                      )),
+                      child: image
+                          ? Image.asset(
+                              'assets/texts.png',
+                              width: 20,
+                            )
+                          : null),
                 ),
                 Text(logotext,
                     style: const TextStyle(
